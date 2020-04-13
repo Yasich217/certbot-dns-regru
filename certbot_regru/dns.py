@@ -89,7 +89,8 @@ class _RegRuClient(object):
             logger.error('Encountered error adding TXT record: %d %s', e, e)
             raise errors.PluginError('Error communicating with the Reg.ru API: {0}'.format(e))
 
-        if 'result' not in response or response['result'] != 'success':
+        if 'result' not in response or response['result'] != 'success' \
+                or response['answer']['domains'][0]['result'] != 'success':
             logger.error('Encountered error adding TXT record: %s', response)
             raise errors.PluginError('Error communicating with the Reg.ru API: {0}'.format(response))
 
@@ -117,7 +118,8 @@ class _RegRuClient(object):
             logger.warning('Encountered error deleting TXT record: %s', e)
             return
 
-        if 'result' not in response or response['result'] != 'success':
+        if 'result' not in response or response['result'] != 'success' \
+                or response['answer']['domains'][0]['result'] != 'success':
             logger.warning('Encountered error deleting TXT record: %s', response)
             return
 
