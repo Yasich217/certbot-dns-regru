@@ -20,12 +20,12 @@ with open('README.md') as f:
     long_description = f.read()
 
 setup(
-    name='certbot-regru',
+    name='certbot-dns-regru',
     version=__version__,
     description="Reg.ru DNS authenticator plugin for Certbot",
     long_description=long_description,
     long_description_content_type='text/markdown',
-    url='https://github.com/free2er/certbot-regru',
+    url='https://github.com/Yasich217/certbot-dns-regru',
     author="Max Pryakhin",
     author_email='m.pryakhin@gmail.com',
     license='MIT',
@@ -56,7 +56,7 @@ setup(
     include_package_data=True,
     entry_points={
         'certbot.plugins': [
-            'dns = certbot_regru.dns:Authenticator',
+            'dns-regru = certbot_regru.dns:Authenticator',
         ],
     },
     test_suite='certbot_regru',

@@ -135,8 +135,14 @@ class _RegRuClient(object):
         """
         pieces = domain.split('.')
 
+        # This worked for subdomain.domain.com
         input_data['subdomain'] = '.'.join(pieces[:-2])
         input_data['domains'] = [{'dname': '.'.join(pieces[-2:])}]
+
+        # uncomment this for work for multi-pieces domain.
+        # source https://github.com/free2er/certbot-regru/issues/3
+        # input_data['subdomain'] = '.'.join(pieces[:1])
+        # input_data['domains'] = [{'dname': '.'.join(pieces[1:])}]
 
         data = self.options.copy()
         data.update({'input_data': json.dumps(input_data)})
